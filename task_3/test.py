@@ -32,6 +32,21 @@ def test_time_imported():
     assert hasattr(author, 'time'), "Импортируйте модуль time"
 
 
+def test_time_check_function():
+    search_str = (
+        r'def time_check\(func\):\n'
+        r'\s*def wrapper\(\*args\):\n'
+        r'\s*start_time = time\.time\(\)\n'
+        r'\s*result = func\(\*args\)\n'
+        r'\s*execution_time = round\(time\.time\(\) - start_time, 1\)\n'
+        r'\s*print\(f\'Время выполнения функции: {execution_time} с.\'\)\n'
+        r'\s*return result\n\n'
+        r'\s*return wrapper'
+    )
+    code_function = get_code("def time_check", usercode).strip()
+    assert re.fullmatch(search_str, code_function), "Не изменяйте функцию time_check"
+
+
 def test_functions_exists():
     functions = ("time_check", "cache_args", "long_heavy")
     for func in functions:
