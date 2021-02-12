@@ -21,7 +21,7 @@ def get_code(match_line, usercode):
             result.append(line)
             indentation = len(line) - len(line.strip())
             continue
-        elif indentation == check_indentation and not line.strip().startswith('#'):
+        elif indentation == check_indentation and not line.strip().startswith('#') and not line.strip() == '':
             break
         elif match:
             result.append(line)
