@@ -28,6 +28,10 @@ def get_code(match_line, usercode):
     return '\n'.join(result)
 
 
+def test_time_imported():
+    assert hasattr(author, 'time'), "Импортируйте модуль time"
+
+
 def test_functions_exists():
     functions = ("time_check", "cache_args", "long_heavy")
     for func in functions:
